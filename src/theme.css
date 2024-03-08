@@ -1,0 +1,38 @@
+:root {
+  --gap: 4px;
+  --gap-2: 8px;
+  --gap-3: 12px;
+
+  --border-radius-md: 6px;
+
+  --text-size-sm: 10px;
+  --text-size: 14px;
+  --text-height: 200%;
+  --text-weight: 500;
+
+  /* colors */
+  --color-canvas-light: #ffffff;
+
+  --color-primary-light: #4b9697;
+  --color-primary: #419293;
+  --color-primary-dark: #377d80;
+
+  --color-transparent-dark: #00000018;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: var(--text-size);
+  line-height: var(--text-height);
+  font-weight: var(--text-weight);
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  margin: 20px;
+  background: #777;
+}
+
+main {
+  display: flex;
+  gap: 20px;
+}

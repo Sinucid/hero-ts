@@ -1,0 +1,8 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  width: var(--icon-size, 10px);
+  height: var(--icon-size, 10px);
+  font-size: calc(var(--icon-size, 10px) * 1.4);
+}

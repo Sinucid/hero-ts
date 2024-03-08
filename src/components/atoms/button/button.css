@@ -1,0 +1,42 @@
+a,
+button {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  font-size: var(--text-size-sm);
+  line-height: var(--text-size-sm);
+  padding: var(--gap-3);
+  border-radius: var(--border-radius-md);
+  border: 2px solid var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-canvas-light);
+  gap: var(--gap-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: 2px solid transparent;
+}
+
+:host(:not([type="secondary"])) :is(a, button):hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+:host(:not([type="secondary"])) :is(a, button):active {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+}
+
+:host([type="secondary"]) :is(a, button) {
+  background: transparent;
+  border-color: var(--color-canvas-light);
+}
+
+:host([type="secondary"]) :is(a, button):hover:not(:active) {
+  background: var(--color-transparent-dark);
+}
+
+:is(a, button):focus-visible {
+  outline-color: var(--color-primary-light);
+  outline-offset: 1px;
+}
