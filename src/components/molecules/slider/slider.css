@@ -1,0 +1,139 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: var(--slider-height, 720px);
+  position: relative;
+}
+
+section {
+  position: absolute;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  width: 100%;
+  inset-inline-start: 0;
+  inset-block-end: 0;
+  padding: 0 var(--gap-3) var(--gap-10);
+}
+
+ul {
+  all: unset;
+  list-style: none;
+  display: flex;
+  gap: var(--gap-4);
+  width: 100%;
+  margin-inline-end: auto;
+}
+
+li {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-canvas-light);
+  flex: 1 1 0px;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+li.active {
+  opacity: 1;
+}
+
+slot {
+  display: flex;
+  flex: 1 0 auto;
+  flex-wrap: nowrap;
+  justify-content: normal;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+slot::-webkit-scrollbar {
+  display: none;
+}
+
+::slotted(*) {
+  flex: 0 0 auto;
+  justify-content: center;
+  max-width: none;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  width: 100%;
+}
+
+button {
+  --icon-size: 16px;
+
+  all: unset;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: var(--color-canvas-light);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: 2px solid transparent;
+}
+
+button:hover:not(:disabled) {
+  background: var(--color-transparent-dark);
+}
+
+button:focus-visible {
+  outline-color: var(--color-primary-light);
+  outline-offset: 1px;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* S-screens */
+@media (min-width: 768px) {
+  section {
+    padding: 0 var(--gap-4) var(--gap-10);
+  }
+
+  ul {
+    max-width: 800px;
+  }
+
+  button {
+    display: flex;
+  }
+}
+/* M-screens */
+@media (min-width: 1024px) {
+  section {
+    padding: 0 var(--gap-5) var(--gap-10);
+  }
+
+  ul {
+    max-width: 600px;
+  }
+}
+
+/* L-screens */
+@media (min-width: 1280px) {
+  section {
+    padding: 0 var(--gap-20) var(--gap-10);
+  }
+
+  ul {
+    max-width: 680px;
+  }
+}
+
+/* XL-screens */
+@media (min-width: 1440px) {
+  ul {
+    max-width: 880px;
+  }
+}
