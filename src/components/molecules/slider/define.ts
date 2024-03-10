@@ -1,4 +1,4 @@
 import { SliderComponent } from "./slider";
 
-export const defileSliderComponent = () =>
+export const defineSliderComponent = () =>
   customElements.define("slider-component", SliderComponent);

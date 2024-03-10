@@ -1,4 +1,4 @@
 import { AppComponent } from "./app";
 
-export const defileAppComponent = () =>
+export const defineAppComponent = () =>
   customElements.define("app-root", AppComponent);

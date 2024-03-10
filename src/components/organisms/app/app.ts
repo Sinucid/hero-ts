@@ -1,10 +1,9 @@
-import { Component } from "../../../utils";
-
 import styles from "./app.css?inline";
 
-export class AppComponent extends Component {
-  protected override render() {
-    this.shadowRoot!.innerHTML = `
+export class AppComponent extends HTMLElement {
+  protected render() {
+    this.innerHTML = `
+      <style>${styles}</style>
       <main>
         <slider-component>
           <hero-component>
@@ -66,8 +65,7 @@ export class AppComponent extends Component {
       </main>`;
   }
 
-  constructor() {
-    super();
-    this.setupStyles(styles);
+  connectedCallback() {
+    this.render();
   }
 }

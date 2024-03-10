@@ -1,4 +1,4 @@
 import { ButtonComponent } from "./button";
 
-export const defileButtonComponent = () =>
+export const defineButtonComponent = () =>
   customElements.define("button-component", ButtonComponent);

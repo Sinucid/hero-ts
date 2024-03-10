@@ -2,15 +2,15 @@ import "./reset.css";
 import "./theme.css";
 
 import {
-  defileButtonComponent,
-  defileIconComponent,
-  defileHeroComponent,
+  defineButtonComponent,
+  defineIconComponent,
+  defineHeroComponent,
 } from "./components/atoms";
-import { defileSliderComponent } from "./components/molecules";
-import { defileAppComponent } from "./components/organisms";
+import { defineSliderComponent } from "./components/molecules";
+import { defineAppComponent } from "./components/organisms";
 
-defileButtonComponent();
-defileIconComponent();
-defileHeroComponent();
-defileSliderComponent();
-defileAppComponent();
+defineButtonComponent();
+defineIconComponent();
+defineHeroComponent();
+defineSliderComponent();
+defineAppComponent();

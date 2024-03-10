@@ -11,6 +11,9 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
+    "@open-wc/testing-helpers": "^3.0.0",
+    "construct-style-sheets-polyfill": "^3.1.0",
+    "jsdom": "^24.0.0",
     "prettier": "3.2.5",
     "typescript": "^5.2.2",
     "vite": "^5.1.4",

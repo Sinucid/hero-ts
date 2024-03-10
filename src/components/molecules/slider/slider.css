@@ -17,6 +17,10 @@ section {
   padding: 0 var(--gap-3) var(--gap-10);
 }
 
+section:empty {
+  display: none;
+}
+
 ul {
   all: unset;
   list-style: none;

@@ -1,4 +1,4 @@
 import { IconComponent } from "./icon";
 
-export const defileIconComponent = () =>
+export const defineIconComponent = () =>
   customElements.define("icon-component", IconComponent);
