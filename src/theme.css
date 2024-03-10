@@ -10,8 +10,8 @@
   --border-radius-md: 6px;
 
   --text-size-sm: 10px;
-  --text-size: 14px;
-  --text-height: 200%;
+  --text-size: 12px;
+  --text-height: 2;
   --text-weight: 500;
 
   /* colors */
@@ -31,4 +31,16 @@ body {
   font-weight: var(--text-weight);
   font-optical-sizing: auto;
   font-style: normal;
+}
+
+h1 {
+  font-size: calc(var(--text-size) * 2);
+  line-height: 1.5;
+}
+
+/* S-screens */
+@media (min-width: 768px) {
+  body {
+    --text-size: 14px;
+  }
 }

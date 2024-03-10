@@ -4,9 +4,9 @@ button {
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  font-size: var(--text-size-sm);
-  line-height: var(--text-size-sm);
-  padding: var(--gap-3);
+  font-size: var(--text-size);
+  line-height: var(--text-size);
+  padding: var(--gap-2) var(--gap-3);
   border-radius: var(--border-radius-md);
   border: 2px solid var(--color-primary);
   background: var(--color-primary);

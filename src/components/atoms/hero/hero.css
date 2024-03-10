@@ -1,0 +1,61 @@
+:host {
+  --content-max-width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  color: var(--color-canvas-light);
+  padding: 80px var(--gap-3);
+}
+
+:host,
+slot {
+  box-sizing: border-box;
+}
+
+slot:not([name])::slotted(:not(img)) {
+  max-width: var(--content-max-width);
+}
+
+slot[name="actions"] {
+  display: flex;
+  gap: var(--gap-2);
+  flex-wrap: wrap;
+  padding-block-start: var(--gap-5);
+}
+
+::slotted(img) {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+}
+
+/* S-screens */
+@media (min-width: 768px) {
+  :host {
+    padding: 80px var(--gap-5);
+  }
+}
+
+/* L-screens */
+@media (min-width: 1280px) {
+  :host {
+    --content-max-width: 800px;
+
+    padding: 160px var(--gap-20);
+  }
+}
+
+/* XL-screens */
+@media (min-width: 1440px) {
+  :host {
+    --content-max-width: 900px;
+  }
+}

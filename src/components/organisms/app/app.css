@@ -1,0 +1,6 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-5);
+  min-height: 100vh;
+}

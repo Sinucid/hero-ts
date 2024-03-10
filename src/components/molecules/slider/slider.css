@@ -58,7 +58,6 @@ slot::-webkit-scrollbar {
 
 ::slotted(*) {
   flex: 0 0 auto;
-  justify-content: center;
   max-width: none;
   scroll-snap-align: start;
   scroll-snap-stop: always;

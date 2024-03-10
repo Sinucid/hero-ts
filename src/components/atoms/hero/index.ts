@@ -1,2 +1,2 @@
-export * from "./slider";
+export * from "./hero";
 export * from "./define";
