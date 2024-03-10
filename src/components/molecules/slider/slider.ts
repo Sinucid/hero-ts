@@ -29,9 +29,9 @@ export class SliderComponent extends Component {
   }
 
   protected handleScroll(): void {
-    const newIndexMaybe = Math.floor(
-      this.slotElement.scrollLeft / this.slides![0].clientWidth,
-    );
+    const newIndexMaybe =
+      Math.floor(this.slotElement.scrollLeft) /
+      Math.floor(this.slides![0].getBoundingClientRect().width);
 
     if (newIndexMaybe === this.activeSlideIndex) return;
 

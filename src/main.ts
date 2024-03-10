@@ -7,10 +7,14 @@ import {
   defineHeroComponent,
 } from "./components/atoms";
 import { defineSliderComponent } from "./components/molecules";
-import { defineAppComponent } from "./components/organisms";
+import {
+  defineAppComponent,
+  defineProductSliderComponent,
+} from "./components/organisms";
 
 defineButtonComponent();
 defineIconComponent();
 defineHeroComponent();
 defineSliderComponent();
 defineAppComponent();
+defineProductSliderComponent();

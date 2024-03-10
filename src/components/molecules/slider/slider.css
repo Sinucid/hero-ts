@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: var(--slider-height, 720px);
   position: relative;
 }
 
@@ -66,6 +65,7 @@ slot::-webkit-scrollbar {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   width: 100%;
+  height: var(--slider-height, 720px);
 }
 
 button {

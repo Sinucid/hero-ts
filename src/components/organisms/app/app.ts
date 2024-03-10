@@ -5,6 +5,7 @@ export class AppComponent extends HTMLElement {
     this.innerHTML = `
       <style>${styles}</style>
       <main>
+        <h2>Static data slider</h2>
         <slider-component>
           <hero-component>
             <img src="/1.jpeg" alt="first slide"/>
@@ -62,10 +63,13 @@ export class AppComponent extends HTMLElement {
             <button-component slot="actions" href="/" type="secondary">Kontakt</button-component>
           </hero-component>
         </slider-component>
+
+        <h2>API data slider</h2>
+        <product-slider-component></product-slider-component>
       </main>`;
   }
 
-  connectedCallback() {
+  async connectedCallback() {
     this.render();
   }
 }
