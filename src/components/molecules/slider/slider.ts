@@ -29,9 +29,12 @@ export class SliderComponent extends Component {
   }
 
   protected handleScroll(): void {
-    const newIndexMaybe =
+    console.log(123);
+
+    const newIndexMaybe = Math.floor(
       Math.floor(this.slotElement.scrollLeft) /
-      Math.floor(this.slides![0].getBoundingClientRect().width);
+        Math.floor(this.slides![0].getBoundingClientRect().width),
+    );
 
     if (newIndexMaybe === this.activeSlideIndex) return;
 
@@ -121,7 +124,7 @@ export class SliderComponent extends Component {
     super();
     this.setupStyles(styles);
 
-    this.handleScroll = debounce(this.handleScroll.bind(this), 100);
+    this.handleScroll = debounce(this.handleScroll.bind(this), 33);
     this.handleClick = this.handleClick.bind(this);
     this.handleSlotChange = this.handleSlotChange.bind(this);
   }

@@ -1,8 +1,5 @@
-export type ApiRequestMethods = "GET";
-
 export interface ApiRequest extends RequestInit {
   url: string;
-  method?: ApiRequestMethods;
 }
 
 export interface ApiResponse<Response> {
