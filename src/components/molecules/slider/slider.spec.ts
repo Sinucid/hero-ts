@@ -29,6 +29,9 @@ describe("SliderComponent", () => {
     expect(buttons?.[1].disabled).toBe(nextDisabled);
   };
 
+  const slot = () =>
+    element.shadowRoot?.querySelector("slot") as HTMLSlotElement;
+
   beforeAll(defineSliderComponent);
 
   beforeEach(async () => {
@@ -41,9 +44,8 @@ describe("SliderComponent", () => {
   });
 
   it("should render inner content", () => {
-    const slot = element.shadowRoot?.querySelector("slot");
     const navigation = element.shadowRoot?.querySelector("navigation");
-    expect(slot).toBeDefined();
+    expect(slot()).toBeDefined();
     expect(navigation).toBeDefined();
   });
 
@@ -91,8 +93,7 @@ describe("SliderComponent", () => {
   describe("when next slide button is clicked", () => {
     let scrollToSpy: MockInstance;
     beforeEach(() => {
-      const slot = element.shadowRoot?.querySelector("slot")!;
-      scrollToSpy = vi.spyOn(slot, "scrollTo");
+      scrollToSpy = vi.spyOn(slot(), "scrollTo");
       element.shadowRoot?.querySelectorAll("button")[1]?.click();
     });
 
@@ -107,26 +108,50 @@ describe("SliderComponent", () => {
     it("should make second indicator active", () => {
       checkActiveSlide(1);
     });
+
+    describe("and prev slide button is clicked", () => {
+      beforeEach(() => {
+        scrollToSpy = vi.spyOn(slot(), "scrollTo");
+        element.shadowRoot?.querySelectorAll("button")[0]?.click();
+      });
+
+      it("should scroll the container", () => {
+        expect(scrollToSpy).toHaveBeenCalled();
+      });
+
+      it("should unable next slide button and disable prev", () => {
+        checkButtonsDisabled(true, false);
+      });
+
+      it("should make first indicator active", () => {
+        checkActiveSlide(0);
+      });
+    });
   });
 
   describe("when container is scrolled", () => {
-    let scrollToSpy: MockInstance;
+    const snapSize = 200;
     beforeEach(() => {
       vi.useFakeTimers();
 
-      const slot = element.shadowRoot?.querySelector("slot")!;
-      scrollToSpy = vi.spyOn(slot, "scrollTo");
-      slot.dispatchEvent(new Event("scroll"));
+      slot().scrollLeft = snapSize;
+      slot().dispatchEvent(new Event("scroll"));
+      const firstSlide = element.querySelector("div")!;
+      vi.spyOn(firstSlide, "offsetWidth", "get").mockReturnValue(snapSize);
+      slot().dispatchEvent(new Event("scroll"));
 
-      vi.runAllTimers();
+      vi.advanceTimersByTime(100);
     });
 
     afterEach(() => {
       vi.restoreAllMocks();
+      vi.clearAllTimers();
     });
 
-    it("should scroll the container", () => {
-      expect(scrollToSpy).toHaveBeenCalled();
+    it("should make second indicator active and disable next button", () => {
+      checkActiveSlide(1);
+      checkButtonsDisabled(false, true);
+      vi.clearAllTimers();
     });
   });
 });

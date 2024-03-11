@@ -1,4 +1,4 @@
-import { defineConfig, UserConfig } from "vitest/config";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
@@ -7,4 +7,4 @@ export default defineConfig({
     include: ["**/*.spec.ts"],
     setupFiles: ["construct-style-sheets-polyfill", "./setupTests.ts"],
   },
-}) as UserConfig;
+});

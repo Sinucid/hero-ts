@@ -18,6 +18,10 @@ export class SliderComponent extends Component {
     return this.slotElement?.assignedElements({ flatten: true });
   }
 
+  protected get slideWidth(): number {
+    return (this.slides?.[0] as HTMLElement)?.offsetWidth ?? 0;
+  }
+
   protected handleSlotChange(): void {
     this.activeSlideIndex = 0;
     this.navigationElement.innerHTML =
@@ -25,19 +29,18 @@ export class SliderComponent extends Component {
         ? `${this.renderIndicators()}${this.renderButtons()}`
         : "";
 
-    this.syncState();
+    this.syncUI();
   }
 
   protected handleScroll(): void {
-    const newIndexMaybe = Math.floor(
-      Math.floor(this.slotElement.scrollLeft) /
-        Math.floor(this.slides![0].getBoundingClientRect().width),
+    const newIndexMaybe = Math.round(
+      this.slotElement.scrollLeft / this.slideWidth,
     );
 
     if (newIndexMaybe === this.activeSlideIndex) return;
 
     this.activeSlideIndex = newIndexMaybe;
-    this.syncState();
+    this.syncUI();
   }
 
   protected handleClick(event: MouseEvent): void {
@@ -50,16 +53,12 @@ export class SliderComponent extends Component {
     if (!navElement) return;
 
     this.activeSlideIndex += navElement.dataset.nav === "prev" ? -1 : 1;
-    this.syncState();
+    this.scrollToIndex();
+    this.syncUI();
   }
 
-  protected syncState(): void {
+  protected syncUI(): void {
     if (!this.slides?.length) return;
-
-    //sync scroll
-    this.slotElement?.scrollTo({
-      left: this.activeSlideIndex * this.slides![0].clientWidth,
-    });
 
     //sync indicators
     this.shadowRoot!.querySelectorAll<HTMLElement>("li").forEach(
@@ -78,6 +77,12 @@ export class SliderComponent extends Component {
         );
       },
     );
+  }
+
+  protected scrollToIndex(index = this.activeSlideIndex): void {
+    this.slotElement?.scrollTo({
+      left: index * this.slideWidth,
+    });
   }
 
   protected override render() {
